@@ -26,12 +26,11 @@ $scat->dealCards();
     <link href="./assets/css/style.css" rel="stylesheet">
   </head>
   <body>
-    <!-- Layout of cards
+    Layout of cards
     <div class="card clubs" data-value="10"></div>
     <div class="card spades" data-value="8"></div>
     <div class="card hearts" data-value="7"></div>
     <div class="card diamonds" data-value="B"></div>
-    //-->
   </body>
 </html>
 

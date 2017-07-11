@@ -12,6 +12,12 @@ class Player
      */
     private $name;
     
+	/**
+	 * Holds the information if the created player is a dealer
+	 * @access private
+	 * @var bool
+	 */
+	 private $dealer;
     /**
      * Holds players cards.
      * @access  private
@@ -39,9 +45,10 @@ class Player
      * @param   
      * @return  object
      */
-    public function __construct($name)
+    public function __construct($name, $dealer)
     {
         $this->name = $name;
+		$this->dealer = $dealer;
     }
 
     /**
