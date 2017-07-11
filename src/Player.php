@@ -25,7 +25,14 @@ class Player
      * @var     int
      */
     private $lives;
-
+	
+	/**
+	 * Holds players current points.
+	 * @access private
+	 * @var    float
+	 */
+	private $points;
+	 
     /**
      * Initialize a new player.
      * @access  public
@@ -82,6 +89,41 @@ class Player
     {
         array_push($this->hand, $card);
     }
+	
+   /**
+     * Returns players hand cards
+     * @access  public
+     * @return  array
+     */
+    public function getHandCards()
+    {
+        return $this->hand;
+    }
+	
+	/**
+	 * Sets amount of current points the player has
+	 * @access public
+	 * @param float $points
+	 * @return void
+	 */
+	 public function setPoints($points)
+	 {
+	    if (!$points instanceof float)
+        {
+            throw new Exception("");
+        }
+		 $this->points = $points;
+	 }
+	 
+	/**
+	 * Returns players current points
+	 * @access public
+	 * @return float
+	 */
+	 public function getPoints()
+	 {
+		 return $this->points;
+	 }
 }
 
 ?>
