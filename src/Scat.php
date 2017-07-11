@@ -39,7 +39,6 @@ class Scat extends Game
                 $this->stack->addCard(new Card($suit, $value, $points));
             }
         }
-
         $this->stack->shuffle();
         $this->stack->shuffle();
     }

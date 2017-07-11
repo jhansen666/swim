@@ -80,12 +80,20 @@ class Game
 	}
 	 
 	/**
-	* 
-	*
+	* Adds the points of each card in the players hand
+	* @access public
+	* @param Player player
+	* @return void
 	*/
 	public function checkHand($player)
     {
-		 
+		$points = 0;
+		foreach($player->getHandCards AS $handCard)
+		{
+			$points += $handCard[2];
+			// for testing purposes
+			echo $points;
+		}
 	}
 }
 
