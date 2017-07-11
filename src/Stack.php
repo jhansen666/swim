@@ -34,10 +34,9 @@ class Stack
      * @access  public
      * @return  Card
      */
-    public function drawCard($card)
+    public function drawCard()
     {
-        unset($this->hand[array_search($card, $this->hand)]); 
-		$this->hand = array_values($this->hand);
+        return array_pop($this->cards);
     }
 
     /**

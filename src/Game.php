@@ -71,10 +71,11 @@ class Game
 		}
 		else
 		{
-			$openStack->drawCard($stack[$cardOne]);
 			$player->giveCard($stack[$cardOne]);
-			$player->drawCard($hand[$cardTwo]);
 			$openStack->addCard($hand[$cardTwo]);
+			$openStack->drawCard($stack[$cardOne]);
+			$player->drawCard($hand[$cardTwo]);
+			
 		}
 	}
 	 
