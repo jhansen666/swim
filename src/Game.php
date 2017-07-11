@@ -50,19 +50,40 @@ class Game
     }
 	
 	/**
-	* 
-	*
+	* Exchanges cards chosen by the player
+	* @access public
+	* @param Player $player 
+	* @param Stack $openStack
+	* @param Bool $all
+	* @param Int $cardOne
+	* @param Int $cardTwo
+	* @return void
 	*/
-	public function changeOpenStack()
+	public function changeOpenStack($player, $openStack, $all, $cardOne, $cardTwo)
 	{
-		 
+		$hand = $player->getHandCards();
+		$stack = $openStack->getStack();
+		
+		if($all === TRUE)
+		{
+			$player->setHandCards($stack);
+			// setStack noch nicht vorhanden
+			$openStack->setStack($hand);
+		}
+		else
+		{
+			$openStack->drawCard($stack[$cardOne]);
+			$player->giveCard($stack[$cardOne]);
+			$player->drawCard($hand[$cardTwo]);
+			$openStack->addCard($hand[$cardTwo]);
+		}
 	}
 	 
 	/**
 	* 
 	*
 	*/
-	public function checkHand()
+	public function checkHand($player)
     {
 		 
 	}
