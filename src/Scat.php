@@ -38,7 +38,7 @@ class Scat extends Game
     }
 
     /**
-     * Deals to each player three cards.
+     * Deals three cards to each player.
      * @access  public
      * @return  void
      */
