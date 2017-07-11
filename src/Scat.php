@@ -13,6 +13,13 @@ class Scat extends Game
     private $stack;
 
     /**
+     * Holds the community cards.
+     * @access  private
+     * @var     Card[]
+     */
+    private $openStack;
+
+    /**
      * Initialize a new scat game.
      * @access  public
      * @param   Player
@@ -44,7 +51,7 @@ class Scat extends Game
      */
     public function dealCards()
     {
-        for ($i = 0; $i < 3; $i++)
+        for ($i = 0; $i < count($this->players); $i++)
         {
             foreach($this->players as $player)
             {

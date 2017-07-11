@@ -5,9 +5,9 @@ define('DS',   DIRECTORY_SEPARATOR);
 
 require_once(ROOT . DS . 'vendor' . DS . 'autoload.php');
 
-$player_1 = new Player("Player 1");
-$player_2 = new Player("Player 2");
-$player_3 = new Player("Player 3");
+$player_1 = new Player("Player 1", true);
+$player_2 = new Player("Player 2", false);
+$player_3 = new Player("Player 3", false);
 
 $scat = new Scat();
 
