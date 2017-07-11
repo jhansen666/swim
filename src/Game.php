@@ -67,7 +67,6 @@ class Game
 		if($all === TRUE)
 		{
 			$player->setHandCards($stack);
-			// setStack noch nicht vorhanden
 			$openStack->setStack($hand);
 		}
 		else
@@ -88,10 +87,23 @@ class Game
 	public function checkHand($player)
     {
 		$points = 0;
-		foreach($player->getHandCards AS $handCard)
+		$handCards = $player->getHandCards;
+		foreach($handCards AS $handCard)
 		{
-			$points += $handCard[2];
-			// for testing purposes
+			if(array_count_values(array_flip(array_column($array, 'heart'))) + $counts = array_count_values(array_flip(array_column($array, 'clubs'))) == 2)
+			{
+				if($handCards[0] == 'clubs' OR $handCards[0] == 'heart')
+				{
+					$points += $handCard[2];	
+				}
+			}
+			else
+			{
+				if($handCards[0] == 'diamonds' OR $handCards[0] == 'spades')
+				{
+					$points += $handCard[2];
+				}
+			}
 			echo $points;
 		}
 	}
