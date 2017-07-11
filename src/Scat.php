@@ -67,6 +67,7 @@ class Scat extends Game
         $card = $this->openStack[$card2];
         $this->openStack[$card1] = $card2;
         $cards[$card2] = $card;
+        $player->setHandCards($cards);
     }
 
     /**
