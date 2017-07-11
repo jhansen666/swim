@@ -55,6 +55,21 @@ class Scat extends Game
     }
 
     /**
+     * Replace a single card from player to openstack and otherwise.
+     * @access  public
+     * @param   Player  $player
+     * @param   int     $card1  - OpenStack
+     * @param   int     $card2  - Spieler
+     */
+    public function changeOpenStackCard($player, $card1, $card2)
+    {
+        $cards = $player->getHandCards();
+        $card = $this->openStack[$card2];
+        $this->openStack[$card1] = $card2;
+        $cards[$card2] = $card;
+    }
+
+    /**
      * Returns all cards.
      * @access  public
      * @return  Card[]
