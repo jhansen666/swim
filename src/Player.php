@@ -87,7 +87,17 @@ class Player
     {
         return $this->name;
     }
-
+    
+	/**
+     * Removes a card from this hand.
+     * @access  public
+     * @return  Card
+     */
+	public function drawCard()
+    {
+        return array_pop($this->cards);
+    }
+	
     /**
      * Adds card onto the players hand
      * @access  public
@@ -97,6 +107,16 @@ class Player
     {
         array_push($this->hand, $card);
     }
+	
+	/**
+	* Sets the players hand cards to given value
+	* @access public 
+	* @return void
+	*/
+	public function setHandCards($cards)
+	{
+		$this->hand = $cards;
+	}
 	
    /**
      * Returns players hand cards
