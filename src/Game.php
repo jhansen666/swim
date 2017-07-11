@@ -48,6 +48,33 @@ class Game
             throw new Exception("Error: Game->removePlayer() can't find this player.");
         }
     }
+	
+	/**
+	 * 
+	 *
+	 */
+	 public function changeOpenStack()
+	 {
+		 
+	 }
+	 
+	/**
+	 * 
+	 *
+	 */
+	 public function checkHand()
+	 {
+		 
+	 }
+	 
+	/**
+	 * 
+	 *
+	 */
+	 public function drawCards($card)
+	 {
+		 
+	 }
 }
 
 ?>
