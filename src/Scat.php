@@ -44,6 +44,27 @@ class Scat extends Game
     }
 
     /**
+     * Replace all cards with the given cards.
+     * @access  public
+     * @param   Card[]  $cards
+     * @return  void
+     */
+    public function setOpenStack($cards)
+    {
+        $this->openStack = $cards;
+    }
+
+    /**
+     * Returns all cards.
+     * @access  public
+     * @return  Card[]
+     */
+    public function getOpenStack()
+    {
+        return $this->openStack;
+    }
+
+    /**
      * Deals three cards to each player.
      * @access  public
      * @return  void
