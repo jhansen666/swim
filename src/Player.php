@@ -107,21 +107,6 @@ class Player
     {
         return $this->hand;
     }
-	
-	/**
-	 * Sets amount of current points the player has
-	 * @access public
-	 * @param float $points
-	 * @return void
-	 */
-	/* public function setPoints($points)
-	 {
-	    if (!$points instanceof float)
-        {
-            throw new Exception("");
-        }
-		 $this->points = $points;
-	 } */
 	 
 	/**
 	 * Returns players current points
