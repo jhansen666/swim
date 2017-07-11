@@ -66,15 +66,6 @@ class Game
 	 {
 		 
 	 }
-	 
-	/**
-	 * 
-	 *
-	 */
-	 public function drawCards($card)
-	 {
-		 
-	 }
 }
 
 ?>
