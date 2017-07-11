@@ -18,6 +18,7 @@ class Player
 	 * @var bool
 	 */
 	 private $dealer;
+	 
     /**
      * Holds players cards.
      * @access  private
@@ -113,14 +114,14 @@ class Player
 	 * @param float $points
 	 * @return void
 	 */
-	 public function setPoints($points)
+	/* public function setPoints($points)
 	 {
 	    if (!$points instanceof float)
         {
             throw new Exception("");
         }
 		 $this->points = $points;
-	 }
+	 } */
 	 
 	/**
 	 * Returns players current points
