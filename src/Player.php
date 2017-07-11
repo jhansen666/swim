@@ -13,7 +13,7 @@ class Player
     private $name;
     
 	/**
-	 * Holds the information if the created player is a dealer
+	 * Holds the information if the created player is the dealer
 	 * @access private
 	 * @var bool
 	 */
