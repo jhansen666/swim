@@ -50,22 +50,22 @@ class Game
     }
 	
 	/**
-	 * 
-	 *
-	 */
-	 public function changeOpenStack()
-	 {
+	* 
+	*
+	*/
+	public function changeOpenStack()
+	{
 		 
-	 }
+	}
 	 
 	/**
-	 * 
-	 *
-	 */
-	 public function checkHand()
-	 {
+	* 
+	*
+	*/
+	public function checkHand()
+    {
 		 
-	 }
+	}
 }
 
 ?>
