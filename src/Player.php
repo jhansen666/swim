@@ -89,7 +89,7 @@ class Player
     }
 
     /**
-     * 
+     * Adds card onto the players hand
      * @access  public
      * @return  void
      */
