@@ -88,24 +88,74 @@ class Game
 	public function checkHand($player)
     {
 		$points = 0;
-		$handCards = $player->getHandCards;
-		foreach($handCards AS $handCard)
+		$counter = 0;
+		$handCards = $player->getHandCards();
+		$value;
+		$isEqual = FALSE;
+		for($row = 0; $row <= 2; $row++)
 		{
-			if(array_count_values(array_flip(array_column($array, 'heart'))) + $counts = array_count_values(array_flip(array_column($array, 'clubs'))) == 2)
+			if($row == 0)
 			{
-				if($handCards[0] == 'clubs' OR $handCards[0] == 'heart')
-				{
-					$points += $handCard[2];	
-				}
+				$value = $handCards[$row][1];
 			}
 			else
 			{
-				if($handCards[0] == 'diamonds' OR $handCards[0] == 'spades')
+				if($value != $handCards[$row][1])
+				{
+					break;
+				}
+				if($row == 2)
+				{
+					$isEqual = TRUE;
+				}
+			}
+		}
+		if($isEqual == TRUE)
+		{
+			$points = 30.5;
+		}
+		else
+		{
+		foreach($handCards AS $handCard)
+		{
+			if($handCard[0] == "heart" OR $handCard[0] == "clubs")
+			{
+				$counter += 1;
+			}
+		}
+		switch($counter)
+		{
+			case 0:
+			foreach($handCards AS $handCard)
+			{
+				$points += $handCard[2];
+			}
+			break;
+			case 1:
+			foreach($handCards AS $handCard)
+			{
+				if($handCard[0] != "heart" AND $handCard[0] != "clubs")
 				{
 					$points += $handCard[2];
 				}
 			}
-			echo $points;
+			break;
+			case 2:
+			foreach($handCards AS $handCard)
+			{
+				if($handCard[0] == "heart" OR $handCard[0] == "clubs")
+				{
+					$points += $handCard[2];
+				}	
+			}
+			break;
+			case 3:
+			foreach($handCards AS $handCard)
+			{
+				$points += $handCard[2];
+			}
+			break;			
+		}
 		}
 	}
 }
