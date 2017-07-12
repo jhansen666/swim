@@ -116,47 +116,48 @@ class Game
 		}
 		else
 		{
-		foreach($handCards AS $handCard)
-		{
-			if($handCard[0] == "heart" OR $handCard[0] == "clubs")
-			{
-				$counter += 1;
-			}
-		}
-		switch($counter)
-		{
-			case 0:
-			foreach($handCards AS $handCard)
-			{
-				$points += $handCard[2];
-			}
-			break;
-			case 1:
-			foreach($handCards AS $handCard)
-			{
-				if($handCard[0] != "heart" AND $handCard[0] != "clubs")
-				{
-					$points += $handCard[2];
-				}
-			}
-			break;
-			case 2:
 			foreach($handCards AS $handCard)
 			{
 				if($handCard[0] == "heart" OR $handCard[0] == "clubs")
 				{
-					$points += $handCard[2];
-				}	
+					$counter += 1;
+				}
 			}
-			break;
-			case 3:
-			foreach($handCards AS $handCard)
+			switch($counter)
 			{
-				$points += $handCard[2];
+				case 0:
+				foreach($handCards AS $handCard)
+				{
+					$points += $handCard[2];
+				}
+				break;
+				case 1:
+				foreach($handCards AS $handCard)
+				{
+					if($handCard[0] != "heart" AND $handCard[0] != "clubs")
+					{
+						$points += $handCard[2];
+					}
+				}
+				break;
+				case 2:
+				foreach($handCards AS $handCard)
+				{
+					if($handCard[0] == "heart" OR $handCard[0] == "clubs")
+					{
+						$points += $handCard[2];
+					}	
+				}
+				break;
+				case 3:
+				foreach($handCards AS $handCard)
+				{
+					$points += $handCard[2];
+				}
+				break;			
 			}
-			break;			
 		}
-		}
+		return $points;
 	}
 }
 
