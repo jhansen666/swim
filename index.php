@@ -41,9 +41,9 @@ foreach($scat->getPlayers() as $player)
 
     foreach($scat->getDealerHands() as $hand)
     {
-      $hand->setDisplay(false);
-
-      echo '<input type="radio" name="' . str_replace(" ", "", $player->getName()) . '" />'.chr(13);
+      $hand->setDisplay(true);
+      echo '<label class="rad">';
+      echo '<input type="radio" name="' . str_replace(" ", "", $player->getName()) . '" value="b" />'.chr(13);
       foreach($hand->getCards() as $card)
       {
         if ($hand->getDisplay())
@@ -55,6 +55,7 @@ foreach($scat->getPlayers() as $player)
           echo '<img alt="" src="./assets/img/back.jpg" width="223" height="324"/>'.chr(13);
         }
       }
+      echo "</label><br>Points: " . $hand->getPoints() . "<br>" . chr(13);
       echo '<br><br>';
     }
   }
@@ -64,17 +65,19 @@ foreach($scat->getPlayers() as $player)
 
     foreach($hand->getCards() as $card)
     {
+      echo '<label class="rad">';
+      echo '<input type="radio" name="' . str_replace(" ", "", $player->getName()) . '" value="" />';
+
       if ($hand->getDisplay())
       {
         echo '<img alt="" src="./assets/img/' . strtolower($card->getValue()) . '_of_' . strtolower($card->getSuit()) . '.svg"/>'.chr(13);
       }
       else
       {
-        echo '<img alt="" src="./assets/img/back.jpg" width="223" height="324"/>'.chr(13);
+        echo '<img alt="" src="./assets/img/back.jpg" width="223" height="324"/>';
       }
-      echo '<input type="radio" name="' . str_replace(" ", "", $player->getName()) . '" />'.chr(13);
+      echo '</label>'.chr(13);
     }
-    
     echo "<br>Points: " . $hand->getPoints() . "<br>" . chr(13);
   }
 }

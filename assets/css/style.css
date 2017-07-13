@@ -1,2 +1,32 @@
 @charset "UTF-8";
 @import url("normalize.css");
+
+
+.rad {
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+.rad > input {
+  visibility: hidden;
+  position: absolute;
+}
+
+.rad > img {
+  border-radius: 9px;
+  box-shadow: 0 0 4px 2px #000;
+  display: inline-block;
+  height: 324px;
+  margin: 5px 10px 5px 0;
+  vertical-align: middle;
+  width:  223px;
+}
+
+.rad:hover > img {
+  box-shadow: 0 0 4px 2px #00F;
+}
+.rad > input:checked + img{
+  box-shadow: 0 0 4px 2px #F00;
+}
