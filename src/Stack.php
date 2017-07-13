@@ -7,10 +7,10 @@ class Stack
 {
     /**
      * Holds all available cards.
-     * @access  private
+     * @access  protected
      * @var     Card[]
      */
-    private $cards = array();
+    protected $cards = array();
 
     /**
      * Adds a card to this stack.

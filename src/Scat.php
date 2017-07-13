@@ -13,11 +13,35 @@ class Scat extends Game
     private $stack;
 
     /**
-     * Holds the community cards.
+     * Holds community cards.
      * @access  private
      * @var     Card[]
      */
-    private $openStack;
+    private $openStack = array();
+
+    /**
+     * 
+     * @var     int
+     */
+    private $push = 0;
+
+    /**
+     * Indicates if a player has knock to close this game after the round.
+     * @var     bool
+     */
+    private $knock = false;
+
+    /**
+     * Indicates if a player has a blitz and the game is over.
+     * @var     bool
+     */
+    private $blitz = false;
+
+    /**
+     * Holds 
+     * @var     Hand[]
+     */
+    private $dealerHand = array();
 
     /**
      * Initialize a new scat game.
@@ -28,9 +52,11 @@ class Scat extends Game
     public function __construct()
     {
         $this->stack = new Stack();
+        $this->knock = false;
+        $this->blitz = false;
         
-        $suits = array("clubs", "diamonds", "heart", "spades");
-        $values = array("7"  =>  7, "8"  =>  8, "9"  =>  9, "10" => 10, "B"  => 10, "D"  => 10, "K"  => 10, "A"  => 11);
+        $suits = array("Clubs", "Diamonds", "Hearts", "Spades");
+        $values = array("7"  =>  7, "8"  =>  8, "9"  =>  9, "10" => 10, "Jack"  => 10, "Queen"  => 10, "King"  => 10, "Ace"  => 11);
 
         foreach ($suits as $suit)
         {
@@ -39,61 +65,77 @@ class Scat extends Game
                 $this->stack->addCard(new Card($suit, $value, $points));
             }
         }
+
         $this->stack->shuffle();
         $this->stack->shuffle();
     }
 
     /**
-     * Replace all cards with the given cards.
-     * @access  public
-     * @param   Card[]  $cards
-     * @return  void
-     */
-    public function setOpenStack($cards)
-    {
-        $this->openStack = $cards;
-    }
-
-    /**
-     * Replace a single card from player to openstack and otherwise.
-     * @access  public
-     * @param   Player  $player
-     * @param   int     $card1  - OpenStack
-     * @param   int     $card2  - Spieler
-     */
-    public function changeOpenStackCard($player, $card1, $card2)
-    {
-        $cards = $player->getHandCards();
-        $card = $this->openStack[$card2];
-        $this->openStack[$card1] = $card2;
-        $cards[$card2] = $card;
-        $player->setHandCards($cards);
-    }
-
-    /**
-     * Returns all cards.
-     * @access  public
-     * @return  Card[]
-     */
-    public function getOpenStack()
-    {
-        return $this->openStack;
-    }
-
-    /**
-     * Deals three cards to each player.
+     * Deals to each player three cards expept dealer.
      * @access  public
      * @return  void
      */
     public function dealCards()
     {
-        for ($i = 0; $i < count($this->players); $i++)
+        $hand1 = new Hand();
+        $hand2 = new Hand();
+
+        for ($i = 0; $i < 3; $i++)
         {
             foreach($this->players as $player)
             {
-                $player->giveCard($this->stack->drawCard());
+                if (!$player->getIsDealer())
+                {
+                    $player->getHand()->addCard($this->stack->drawCard());
+                }
+                else
+                {
+                    $hand1->addCard($this->stack->drawCard());
+                    $hand2->addCard($this->stack->drawCard());
+                }
             }
         }
+
+        array_push($this->dealerHand, $hand1, $hand2);
+    }
+
+    /**
+     * 
+     * 
+     */
+    public function getDealerHands()
+    {
+        return $this->dealerHand;
+    }
+
+    /**
+     * 
+     * @access  public
+     * @return  void
+     */
+    public function knock()
+    {
+        $this->knock = true;
+    }
+
+    /**
+     * 
+     * @access  public
+     * @return  void
+     */
+    public function push()
+    {
+        $this->push += 1;
+    }
+
+    /**
+     * 
+     * @access  public
+     * @return  void
+     */
+    public function blitz()
+    {
+        $this->blitz = true;
     }
 }
 
