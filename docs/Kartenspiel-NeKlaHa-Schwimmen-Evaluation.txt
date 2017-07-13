@@ -1,7 +1,0 @@
-Bewertung:
-
-Welche Abweichungen haben wir gemacht?:
-
-Wir haben eine Klasse „Hand“ hinzugefügt, damit der Code übersichtlicher wird, aber vor allem, damit Dealer beim Austeilen zwei Hände bekommen kann und sich dann davon einen als seine Hand „aussuchen“ kann.
-Außerdem haben wir wegen der neuen „Hand“ Klasse der Klasse „Scat“ das Attribut „dealerHand“ und die Funktion „getDealerHand“ hinzugefügt.
-Und wir haben in der Klasse „Stack“ das Attribut „cards“ auf von „pirvat“ auf „protected“ gesetzt, damit von der Klasse „Hand“ darauf zugegriffen werden kann.
