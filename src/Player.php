@@ -11,20 +11,13 @@ class Player
      * @var     string
      */
     private $name;
-    
-	/**
-	 * Holds the information if the created player is the dealer
-	 * @access private
-	 * @var bool
-	 */
-	 private $dealer;
-	 
+
     /**
      * Holds players cards.
      * @access  private
-     * @var     Card[]
+     * @var     Hand
      */
-    private $hand = array();
+    private $hand;
 
     /**
      * Holds players life points.
@@ -32,24 +25,26 @@ class Player
      * @var     int
      */
     private $lives;
-	
-	/**
-	 * Holds players current points.
-	 * @access private
-	 * @var    float
-	 */
-	private $points;
-	 
+
+    /**
+     * Indicates if this player is a dealer.
+     * @access  private
+     * @var     bool
+     */
+    private $isDealer = false;
+
     /**
      * Initialize a new player.
      * @access  public
-     * @param   
+     * @param   string  $name
+     * @param   bool    $dealer
      * @return  object
      */
     public function __construct($name, $dealer)
     {
         $this->name = $name;
-		$this->dealer = $dealer;
+        $this->isDealer = $dealer;
+        $this->hand = new Hand();
     }
 
     /**
@@ -70,11 +65,6 @@ class Player
      */
     public function setLives($amount)
     {
-        if (!$amount instanceof int)
-        {
-            throw new Exception("");
-        }
-
         $this->lives = $amount;
     }
 
@@ -87,66 +77,26 @@ class Player
     {
         return $this->name;
     }
-    
-	/**
-     * Removes a card from this hand.
-     * @access  public
-     * @return  Card
-     */
-	public function drawCard($card)
-    {
-		return array_pop($this->cards); 
-    }
-	
+
     /**
-     * Adds card onto the players hand
+     * Returns current hand.
      * @access  public
-     * @return  void
+     * @return  Hand
      */
-    public function giveCard($card)
-    {
-        array_push($this->hand, $card);
-    }
-	
-	/**
-	* Sets the players hand cards to given value
-	* @access public 
-	* @return void
-	*/
-	public function setHandCards($cards)
-	{
-		$this->hand = $cards;
-	}
-	
-   /**
-     * Returns players hand cards
-     * @access  public
-     * @return  array
-     */
-    public function getHandCards()
+    public function getHand()
     {
         return $this->hand;
     }
 
-	/**
-	 * Returns players current points
-	 * @access public
-	 * @return float
-	 */
-	 public function setPoints($points)
-	 {
-		 $this->points = $points;
-	 }
-	 
-	/**
-	 * Returns players current points
-	 * @access public
-	 * @return float
-	 */
-	 public function getPoints()
-	 {
-		 return $this->points;
-	 }
+    /**
+     * Returns if this player is a dealer.
+     * @access  public
+     * @return  bool
+     */
+    public function getIsDealer()
+    {
+        return $this->isDealer;
+    }
 }
 
 ?>
