@@ -88,7 +88,10 @@ class Game
 	public function checkHand($player)
     {
 		$points = 0;
-		$counter = 0;
+		$heartcounter = 0;
+		$clubscounter = 0;
+		$spadescounter = 0;
+		$diamondscounter = 0;
 		$handCards = $player->getHandCards();
 		$value;
 		$isEqual = FALSE;
@@ -116,48 +119,99 @@ class Game
 		}
 		else
 		{
+		foreach($handCards AS $handCard)
+		{
+			if($handCard[0] == "heart")
+			{
+				$heartcounter += 1;
+			}
+		}
+		if($heartcounter > 1)
+		{
+
 			foreach($handCards AS $handCard)
 			{
-				if($handCard[0] == "heart" OR $handCard[0] == "clubs")
-				{
-					$counter += 1;
-				}
-			}
-			switch($counter)
-			{
-				case 0:
-				foreach($handCards AS $handCard)
+				if($handCard[0] == "heart")
 				{
 					$points += $handCard[2];
+				}	
+			}
+		}
+		else
+		{
+			foreach($handCards AS $handCard)
+			{
+				if($handCard[0] == "clubs")
+				{
+					$clubscounter += 1;
 				}
-				break;
-				case 1:
+			}
+			if($clubscounter > 1)
+			{
+
 				foreach($handCards AS $handCard)
 				{
-					if($handCard[0] != "heart" AND $handCard[0] != "clubs")
-					{
-						$points += $handCard[2];
-					}
-				}
-				break;
-				case 2:
-				foreach($handCards AS $handCard)
-				{
-					if($handCard[0] == "heart" OR $handCard[0] == "clubs")
+					if($handCard[0] == "clubs")
 					{
 						$points += $handCard[2];
 					}	
 				}
-				break;
-				case 3:
+			}
+			else
+			{
 				foreach($handCards AS $handCard)
 				{
-					$points += $handCard[2];
+					if($handCard[0] == "diamonds")
+					{
+						$diamondscounter += 1;
+					}
 				}
-				break;			
+				if($diamondscounter > 1)
+				{
+
+					foreach($handCards AS $handCard)
+					{
+						if($handCard[0] == "diamonds")
+						{
+							$points += $handCard[2];
+						}	
+					}
+				}
+				else
+				{
+					foreach($handCards AS $handCard)
+					{
+						if($handCard[0] == "spades")
+						{
+							$spadescounter += 1;
+						}
+					}
+					if($spadescounter > 1)
+					{
+
+						foreach($handCards AS $handCard)
+						{
+							if($handCard[0] == "spades")
+							{
+								$points += $handCard[2];
+							}	
+						}
+					}
+				}
 			}
 		}
-		return $points;
+		if($heartcounter <= 1 AND $clubscounter <= 1 AND $diamondscounter <= 1 AND $spadescounter <= 1)
+		{
+			for($row = 0; $row <= 2; $row++)
+			{
+				if($handCards[2][$row] > $points)
+				{
+					$points = $handCards[$row][2];
+				}
+			}
+		}
+		}
+		$player->setPoints($points);
 	}
 }
 

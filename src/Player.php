@@ -95,8 +95,7 @@ class Player
      */
 	public function drawCard($card)
     {
-		unset($this->hand[array_search($card, $this->hand)]); 
-		$this->hand = array_values($this->hand);
+		return array_pop($this->cards); 
     }
 	
     /**
@@ -128,6 +127,16 @@ class Player
     {
         return $this->hand;
     }
+
+	/**
+	 * Returns players current points
+	 * @access public
+	 * @return float
+	 */
+	 public function setPoints($points)
+	 {
+		 $this->points = $points;
+	 }
 	 
 	/**
 	 * Returns players current points
