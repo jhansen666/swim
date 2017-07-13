@@ -104,16 +104,55 @@ class Hand extends Stack
      */
     public function getPoints()
     {
-        
+		/**
+		 * Contains the number of points the player has.
+		 * @var float
+		 */
         $points = 0;
-		$heartcounter = 0;
+
+		/**
+		 * Counts the occurrences of cards with the color hearts.
+		 * @var int
+		 */
+		$heartscounter = 0;
+
+		/**
+		 * Counts the occurrences of cards with the color clubs.
+		 * @var int
+		 */
 		$clubscounter = 0;
+		
+		/**
+		 * Counts the occurrences of cards with the color spades.
+		 * @var int
+		 */
 		$spadescounter = 0;
+		
+		/**
+		 * Counts the occurrences of cards with the color diamonds.
+		 * @var int
+		 */
 		$diamondscounter = 0;
+
+		/**
+		 * Contains value for comparation.
+		 * @var string
+		 */		
 		$value;
+		
+		/**
+		 * Contains the information if all 3 values are the same.
+		 * @var bool
+		 */
 		$isEqual = FALSE;
+		
+		/**
+		 * Contains the information if all 3 cards are aces.
+		 * @var bool
+		 */
 		$isLightning = FALSE;
-        // Using lambda function to call getSuit() for each object
+		
+        // Using lambda function to call getSuit(), getValue() and getPoints() for each object
         $map = array_map(function($o) {
             $card = array();
             array_push($card, $o->getSuit());
@@ -121,7 +160,11 @@ class Hand extends Stack
             array_push($card, $o->getpoints());
             return $card;
         }, $this->cards);
+		/**
+		* Contains array of cards.
+		*/
 		$handCards = $map;
+		// check if all 3 cards are aces
 		for($row = 0; $row <= 2; $row++)
 		{
 			if($handCards[$row][1] != "Ace")
@@ -136,6 +179,7 @@ class Hand extends Stack
 		}
 		if($isLightning != TRUE)
 		{
+			// check if all 3 cards have equal values
 			for($row = 0; $row <= 2; $row++)
 			{
 				if($row == 0)
@@ -160,16 +204,17 @@ class Hand extends Stack
 			}
 			else
 			{
+				// count occurrences of hearts
 				foreach($handCards AS $handCard)
 				{
 					if($handCard[0] == "Hearts")
 					{
-						$heartcounter += 1;
+						$heartscounter += 1;
 					}
 				}
-				if($heartcounter > 1)
+				if($heartscounter > 1)
 				{
-
+					// sums up points 
 					foreach($handCards AS $handCard)
 					{
 						if($handCard[0] == "Hearts")
@@ -179,7 +224,8 @@ class Hand extends Stack
 					}
 				}
 				else
-				{
+				{  
+					// count occurrences of clubs
 					foreach($handCards AS $handCard)
 					{
 						if($handCard[0] == "Clubs")
@@ -189,7 +235,7 @@ class Hand extends Stack
 					}
 					if($clubscounter > 1)
 					{
-
+						// sums up points
 						foreach($handCards AS $handCard)
 						{
 							if($handCard[0] == "Clubs")
@@ -200,6 +246,7 @@ class Hand extends Stack
 					}
 					else
 					{
+						// count occurrences of diamonds
 						foreach($handCards AS $handCard)
 						{
 							if($handCard[0] == "Diamonds")
@@ -209,7 +256,7 @@ class Hand extends Stack
 						}
 						if($diamondscounter > 1)
 						{
-
+							// sums up points
 							foreach($handCards AS $handCard)
 							{
 								if($handCard[0] == "Diamonds")
@@ -220,6 +267,7 @@ class Hand extends Stack
 						}
 						else
 						{
+							// count occurrences of spades
 							foreach($handCards AS $handCard)
 							{
 								if($handCard[0] == "Spades")
@@ -229,7 +277,7 @@ class Hand extends Stack
 							}
 							if($spadescounter > 1)
 							{
-
+								// sums up points
 								foreach($handCards AS $handCard)
 								{
 									if($handCard[0] == "Spades")
@@ -241,7 +289,8 @@ class Hand extends Stack
 						}
 					}
 				}
-				if($heartcounter <= 1 AND $clubscounter <= 1 AND $diamondscounter <= 1 AND $spadescounter <= 1)
+				// take the single card with the highest point value
+				if($heartscounter <= 1 AND $clubscounter <= 1 AND $diamondscounter <= 1 AND $spadescounter <= 1)
 				{
 					for($row = 0; $row <= 2; $row++)
 					{
