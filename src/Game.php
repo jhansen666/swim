@@ -157,7 +157,7 @@ class Game
 				break;			
 			}
 		}
-		return $points;
+		$player->setPoints($points);
 	}
 }
 
