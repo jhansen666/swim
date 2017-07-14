@@ -294,7 +294,7 @@ class Hand extends Stack
 				{
 					for($row = 0; $row <= 2; $row++)
 					{
-						if($handCards[2][$row] > $points)
+						if($handCards[$row][2] > $points)
 						{
 							$points = $handCards[$row][2];
 						}
