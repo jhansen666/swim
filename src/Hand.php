@@ -106,49 +106,41 @@ class Hand extends Stack
     {
 		/**
 		 * Contains the number of points the player has.
-		 * @var float
 		 */
         $points = 0;
 
 		/**
 		 * Counts the occurrences of cards with the color hearts.
-		 * @var int
 		 */
 		$heartscounter = 0;
 
 		/**
 		 * Counts the occurrences of cards with the color clubs.
-		 * @var int
 		 */
 		$clubscounter = 0;
 		
 		/**
 		 * Counts the occurrences of cards with the color spades.
-		 * @var int
 		 */
 		$spadescounter = 0;
 		
 		/**
 		 * Counts the occurrences of cards with the color diamonds.
-		 * @var int
 		 */
 		$diamondscounter = 0;
 
 		/**
-		 * Contains value for comparation.
-		 * @var string
+		 * Contains value for comparison.
 		 */		
 		$value;
 		
 		/**
 		 * Contains the information if all 3 values are the same.
-		 * @var bool
 		 */
 		$isEqual = FALSE;
 		
 		/**
 		 * Contains the information if all 3 cards are aces.
-		 * @var bool
 		 */
 		$isLightning = FALSE;
 		

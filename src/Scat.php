@@ -20,25 +20,29 @@ class Scat extends Game
     private $openStack = array();
 
     /**
-     * 
+	 * Counter for pushes by the players	
+     * @access private
      * @var     int
      */
     private $push = 0;
 
     /**
      * Indicates if a player has knock to close this game after the round.
+     * @access private
      * @var     bool
      */
     private $knock = false;
 
     /**
      * Indicates if a player has a blitz and the game is over.
-     * @var     bool
+     * @access private
+	 * @var     bool
      */
     private $blitz = false;
 
     /**
-     * Holds 
+     * Holds the current cards the dealer has to choose from
+	 * @access private
      * @var     Hand[]
      */
     private $dealerHand = array();
